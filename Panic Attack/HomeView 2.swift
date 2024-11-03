@@ -25,7 +25,7 @@ struct HomeView: View {
     @State var showWithdrawal = false
     @State var showStripeOnboarding = false
     @State var showUpgrade = false
-    @State var showConfirmSafety = false
+    
     
     
     //Initialize to San Francisco
@@ -89,14 +89,20 @@ struct HomeView: View {
                 ZStack {
                     VStack(alignment : .center) {
                         Spacer()
-                        Text("Send an alert to your community")
+                        Text("When you are in trouble, tap the panic button")
                             .font(.system(size: 18, weight : .bold))
                             .foregroundColor(Color("text-bold"))
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 30)
                         
                         Button(action: {
-                            showConfirmSafety = true
+                            let daysRemaining = currentUser.daysRemainingInFreeTrial(from: currentUser.user.dateCreated, trialLengthInDays: 7)
+                            print("Days remaining in free trial: \(daysRemaining)")
+                            if currentUser.isUserSubscribed || daysRemaining > 0 {
+                                showCreateLocation = true
+                            } else {
+                                showUpgrade = true
+                            }
                         }) {
                             HStack {
                                 Spacer()
@@ -151,6 +157,7 @@ struct HomeView: View {
                     .frame(height : 220)
 
                 }
+
                 
             }
             .background(Color("background"))
@@ -193,23 +200,13 @@ struct HomeView: View {
             ConnectStripeView(showStripeOnboarding : $showStripeOnboarding)
                 .trailingEdgeSheet(isPresented: showStripeOnboarding)
 
-            ConfirmSafetyView(showConfirmSafety: $showConfirmSafety) {
-                let daysRemaining = currentUser.daysRemainingInFreeTrial(from: currentUser.user.dateCreated, trialLengthInDays: 7)
-                print("Days remaining in free trial: \(daysRemaining)")
-                if currentUser.isUserSubscribed || daysRemaining > 0 {
-                    showCreateLocation = true
-                } else {
-                    showUpgrade = true
-                }
-            }
-            .centerGrowingModal(isPresented: showConfirmSafety)
             
-            WithdrawView( showWithdrawal : $showWithdrawal)
+            WithdrawView(showWithdrawal : $showWithdrawal)
                 .trailingEdgeSheet(isPresented: showWithdrawal)
             
             VStack {
                 Spacer()
-                ErrorMessageModal(showErrorMessageModal: $currentUser.showSuccessfulUpload, title: "Successfully Uploaded!", message: "Your upload was successful. Please allow 24-48 hours for review before your balance is updated!")
+                ErrorMessageModal(showErrorMessageModal: $currentUser.showSuccessfulUpload, title: "Successfully Uploaded!", message: "Your upload was successful. Thanks!")
                     .centerGrowingModal(isPresented: currentUser.showSuccessfulUpload)
                 Spacer()
             }
@@ -364,11 +361,11 @@ struct MapOverlayButtons : View {
 }
 
 //struct MapView: UIViewRepresentable {
-//
+//    
 //    @EnvironmentObject var locationViewModel: LocationViewModel
 //
 //    @State var region = MKCoordinateRegion()
-//
+//    
 //    func makeUIView(context: Context) -> MKMapView {
 //        let mapView = MKMapView()
 //        mapView.delegate = context.coordinator
@@ -377,16 +374,16 @@ struct MapOverlayButtons : View {
 //
 //        return mapView
 //    }
-//
-//
+//    
+//    
 //    func updateUIView(_ uiView: MKMapView, context: Context) {
 //        // Assuming LocationViewModel has a way to provide a region; otherwise, this can be removed or adjusted.
 ////        uiView.setRegion(region, animated: true)
-//
+//        
 //        // Remove all existing annotations (except for the user's location) and add fresh from locationAlerts
 //        let currentAnnotations = uiView.annotations.filter { !($0 is MKUserLocation) }
 //        uiView.removeAnnotations(currentAnnotations)
-//
+//        
 //        for alert in locationViewModel.locationAlerts {
 //            let annotation = MKPointAnnotation()
 //            annotation.coordinate = CLLocationCoordinate2D(latitude: alert.lat, longitude: alert.lng)
@@ -394,18 +391,18 @@ struct MapOverlayButtons : View {
 //            uiView.addAnnotation(annotation)
 //        }
 //    }
-//
+//    
 //    func makeCoordinator() -> Coordinator {
 //        Coordinator(self)
 //    }
-//
+//    
 //    class Coordinator: NSObject, MKMapViewDelegate {
 //        var parent: MapView
-//
+//        
 //        init(_ parent: MapView) {
 //            self.parent = parent
 //        }
-//
+//        
 //    }
 //}
 

@@ -73,8 +73,12 @@ class LocationViewModel : NSObject, ObservableObject, CLLocationManagerDelegate 
     // Handle location updates
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
+        // San Francisco coordinates
+        let defaultLocation = CLLocation(latitude: 37.7749, longitude: -122.4194)
+        
+        
         DispatchQueue.main.async { [weak self] in
-            self?.userLocation = location
+            self?.userLocation = defaultLocation
             self?.updateUsersLocationInFirestore()
         }
     }
@@ -233,7 +237,7 @@ class LocationViewModel : NSObject, ObservableObject, CLLocationManagerDelegate 
     ///   - badge: The badge number for the app icon.
     func sendNotification(deviceToken: String, alert: String, badge: Int) {
         // Ensure the URL matches your server's endpoint
-        guard let url = URL(string: "https://locale-ios-d4e8c531cbbe.herokuapp.com/sendNotification/") else {
+        guard let url = URL(string: "\(base_url)/sendNotification/") else {
             print("Invalid URL")
             return
         }

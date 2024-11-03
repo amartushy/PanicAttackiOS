@@ -125,9 +125,12 @@ struct ConfirmVideoUploadView: View {
                                 locationVM.sendAlertToAllAdmins()
                                 
                                 DispatchQueue.main.async {
-                                    showProgress = false
-                                    currentUser.showSuccessfulUpload = true
-                                    showSheet = false
+                                    // Update UI on the main thread
+                                    currentUser.updateUserBalance(by: 10.0, for: currentUser.currentUserID) { success, error in
+                                        showProgress = false
+                                        currentUser.showSuccessfulUpload = true
+                                        showSheet = false
+                                    }
                                 }
                             case .failure(let error):
                                 // Handle failure, such as showing an error alert

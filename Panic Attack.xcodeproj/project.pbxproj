@@ -10,6 +10,7 @@
 		2E580A212BF98B9D00A5BC5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E580A202BF98B9D00A5BC5B /* Assets.xcassets */; };
 		2E580A242BF98B9D00A5BC5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E580A232BF98B9D00A5BC5B /* Preview Assets.xcassets */; };
 		2E580A2B2BF98BC300A5BC5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E580A2A2BF98BC300A5BC5B /* GoogleService-Info.plist */; };
+		2E6BD83B2C325F87008056C9 /* ConfirmSafetyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BD83A2C325F87008056C9 /* ConfirmSafetyView.swift */; };
 		2E7E4BAF2BF99AE1004226AD /* LocationAlertInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BAE2BF99AE1004226AD /* LocationAlertInfoView.swift */; };
 		2E7E4BB12BF99AFA004226AD /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BB02BF99AFA004226AD /* InfoView.swift */; };
 		2E7E4BB32BF99B10004226AD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BB22BF99B10004226AD /* HomeView.swift */; };
@@ -18,7 +19,6 @@
 		2E7E4BB92BF99B3F004226AD /* ConfirmVideoUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BB82BF99B3F004226AD /* ConfirmVideoUploadView.swift */; };
 		2E7E4BBB2BF99BA0004226AD /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7E4BBA2BF99BA0004226AD /* Icons.xcassets */; };
 		2E7E4BBE2BF99C82004226AD /* AdminSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BBD2BF99C82004226AD /* AdminSettingsView.swift */; };
-		2E7E4BC02BF99C88004226AD /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BBF2BF99C88004226AD /* ApplePayViewController.swift */; };
 		2E7E4BC22BF99C8E004226AD /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BC12BF99C8E004226AD /* ChangePasswordView.swift */; };
 		2E7E4BC42BF99C93004226AD /* ConnectStripeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BC32BF99C93004226AD /* ConnectStripeView.swift */; };
 		2E7E4BC62BF99C99004226AD /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BC52BF99C99004226AD /* DeleteAccountView.swift */; };
@@ -36,7 +36,6 @@
 		2E7E4BDF2BF99D00004226AD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BDE2BF99D00004226AD /* LoginView.swift */; };
 		2E7E4BE12BF99D06004226AD /* PasswordResetModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BE02BF99D06004226AD /* PasswordResetModal.swift */; };
 		2E7E4BE32BF99D0B004226AD /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E4BE22BF99D0B004226AD /* SplashScreen.swift */; };
-		2E7E4BE62BF99F12004226AD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E7E4BE52BF99F12004226AD /* Colors.xcassets */; };
 		2E7E4BEB2BF9A0A3004226AD /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 2E7E4BEA2BF9A0A3004226AD /* Stripe */; };
 		2E7E4BED2BF9A0A3004226AD /* StripeApplePay in Frameworks */ = {isa = PBXBuildFile; productRef = 2E7E4BEC2BF9A0A3004226AD /* StripeApplePay */; };
 		2E7E4BEF2BF9A0A3004226AD /* StripeCardScan in Frameworks */ = {isa = PBXBuildFile; productRef = 2E7E4BEE2BF9A0A3004226AD /* StripeCardScan */; };
@@ -61,6 +60,7 @@
 		2E84AB442BF999D000699D15 /* CachedAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E84AB432BF999D000699D15 /* CachedAsyncImageView.swift */; };
 		2E84AB482BF99A8700699D15 /* VideoUploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E84AB472BF99A8700699D15 /* VideoUploadViewModel.swift */; };
 		2E84AB4A2BF99AA000699D15 /* VideoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E84AB492BF99AA000699D15 /* VideoCaptureView.swift */; };
+		2E941B302C46E22000ECFA0A /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E941B2F2C46E22000ECFA0A /* PrivacyPolicyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +68,7 @@
 		2E580A202BF98B9D00A5BC5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E580A232BF98B9D00A5BC5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E580A2A2BF98BC300A5BC5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2E6BD83A2C325F87008056C9 /* ConfirmSafetyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSafetyView.swift; sourceTree = "<group>"; };
 		2E7E4BAE2BF99AE1004226AD /* LocationAlertInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAlertInfoView.swift; sourceTree = "<group>"; };
 		2E7E4BB02BF99AFA004226AD /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		2E7E4BB22BF99B10004226AD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		2E7E4BB82BF99B3F004226AD /* ConfirmVideoUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmVideoUploadView.swift; sourceTree = "<group>"; };
 		2E7E4BBA2BF99BA0004226AD /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		2E7E4BBD2BF99C82004226AD /* AdminSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminSettingsView.swift; sourceTree = "<group>"; };
-		2E7E4BBF2BF99C88004226AD /* ApplePayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
 		2E7E4BC12BF99C8E004226AD /* ChangePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		2E7E4BC32BF99C93004226AD /* ConnectStripeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectStripeView.swift; sourceTree = "<group>"; };
 		2E7E4BC52BF99C99004226AD /* DeleteAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
@@ -95,7 +95,6 @@
 		2E7E4BE02BF99D06004226AD /* PasswordResetModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetModal.swift; sourceTree = "<group>"; };
 		2E7E4BE22BF99D0B004226AD /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		2E7E4BE42BF99D5A004226AD /* Panic-Attack-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Panic-Attack-Info.plist"; sourceTree = SOURCE_ROOT; };
-		2E7E4BE52BF99F12004226AD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = "../../_Fiverr Projects/Panic Attack/Panic Attack iOS/locale/Colors.xcassets"; sourceTree = "<group>"; };
 		2E7E4BFA2BF9A25D004226AD /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		2E84AB292BF996A900699D15 /* CurrentUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUserViewModel.swift; sourceTree = "<group>"; };
 		2E84AB2B2BF996C800699D15 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +107,7 @@
 		2E84AB432BF999D000699D15 /* CachedAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImageView.swift; sourceTree = "<group>"; };
 		2E84AB472BF99A8700699D15 /* VideoUploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUploadViewModel.swift; sourceTree = "<group>"; };
 		2E84AB492BF99AA000699D15 /* VideoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureView.swift; sourceTree = "<group>"; };
+		2E941B2F2C46E22000ECFA0A /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		2EA1763C2BF9B27800EE9DE1 /* Panic Attack.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Panic Attack.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,7 +167,6 @@
 				2E7E4BBC2BF99C3F004226AD /* Menu */,
 				2E580A202BF98B9D00A5BC5B /* Assets.xcassets */,
 				2E7E4BBA2BF99BA0004226AD /* Icons.xcassets */,
-				2E7E4BE52BF99F12004226AD /* Colors.xcassets */,
 				2E580A222BF98B9D00A5BC5B /* Preview Content */,
 			);
 			path = "Panic Attack";
@@ -181,22 +180,30 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2E7DA3292C279ED3008530A0 /* Info & Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				2E7E4BCD2BF99CAC004226AD /* StoreManager.swift */,
+				2E7E4BD32BF99CC0004226AD /* UpgradePremiumView.swift */,
+			);
+			name = "Info & Checkout";
+			sourceTree = "<group>";
+		};
 		2E7E4BBC2BF99C3F004226AD /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				2E7E4BFA2BF9A25D004226AD /* AboutView.swift */,
 				2E7E4BD52BF99CC5004226AD /* WithdrawView.swift */,
-				2E7E4BD32BF99CC0004226AD /* UpgradePremiumView.swift */,
+				2E7DA3292C279ED3008530A0 /* Info & Checkout */,
 				2E7E4BD12BF99CBB004226AD /* TOSView.swift */,
+				2E941B2F2C46E22000ECFA0A /* PrivacyPolicyView.swift */,
 				2E7E4BCF2BF99CB1004226AD /* StripeOnboardingViewModel.swift */,
-				2E7E4BCD2BF99CAC004226AD /* StoreManager.swift */,
 				2E7E4BCB2BF99CA8004226AD /* SideMenuView.swift */,
 				2E7E4BC92BF99CA3004226AD /* SettingsView.swift */,
 				2E7E4BC72BF99C9E004226AD /* ImagePicker.swift */,
 				2E7E4BC52BF99C99004226AD /* DeleteAccountView.swift */,
 				2E7E4BC12BF99C8E004226AD /* ChangePasswordView.swift */,
 				2E7E4BC32BF99C93004226AD /* ConnectStripeView.swift */,
-				2E7E4BBF2BF99C88004226AD /* ApplePayViewController.swift */,
 				2E7E4BBD2BF99C82004226AD /* AdminSettingsView.swift */,
 			);
 			name = Menu;
@@ -234,6 +241,7 @@
 				2E7E4BAE2BF99AE1004226AD /* LocationAlertInfoView.swift */,
 				2E7E4BB02BF99AFA004226AD /* InfoView.swift */,
 				2E7E4BB22BF99B10004226AD /* HomeView.swift */,
+				2E6BD83A2C325F87008056C9 /* ConfirmSafetyView.swift */,
 				2E7E4BB42BF99B21004226AD /* CustomSearchBar.swift */,
 				2E7E4BB62BF99B32004226AD /* CreateNewLocationView.swift */,
 				2E7E4BB82BF99B3F004226AD /* ConfirmVideoUploadView.swift */,
@@ -318,7 +326,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E7E4BE62BF99F12004226AD /* Colors.xcassets in Resources */,
 				2E580A242BF98B9D00A5BC5B /* Preview Assets.xcassets in Resources */,
 				2E580A212BF98B9D00A5BC5B /* Assets.xcassets in Resources */,
 				2E7E4BBB2BF99BA0004226AD /* Icons.xcassets in Resources */,
@@ -345,11 +352,12 @@
 				2E84AB3E2BF999A200699D15 /* Views.swift in Sources */,
 				2E84AB4A2BF99AA000699D15 /* VideoCaptureView.swift in Sources */,
 				2E7E4BCC2BF99CA8004226AD /* SideMenuView.swift in Sources */,
+				2E6BD83B2C325F87008056C9 /* ConfirmSafetyView.swift in Sources */,
 				2E7E4BDF2BF99D00004226AD /* LoginView.swift in Sources */,
 				2E7E4BC42BF99C93004226AD /* ConnectStripeView.swift in Sources */,
 				2E7E4BD92BF99CF2004226AD /* CreateAccountView.swift in Sources */,
-				2E7E4BC02BF99C88004226AD /* ApplePayViewController.swift in Sources */,
 				2E7E4BCA2BF99CA3004226AD /* SettingsView.swift in Sources */,
+				2E941B302C46E22000ECFA0A /* PrivacyPolicyView.swift in Sources */,
 				2E7E4BD02BF99CB1004226AD /* StripeOnboardingViewModel.swift in Sources */,
 				2E7E4BDB2BF99CF6004226AD /* ErrorMessageModal.swift in Sources */,
 				2E7E4BC22BF99C8E004226AD /* ChangePasswordView.swift in Sources */,
@@ -510,8 +518,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Panic-Attack-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This is used to record video footage of alerts";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use this to show location alerts nearby";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use this to show location alerts nearby";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use this to display the location of alerts within a 10 mile radius of you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use this to display the location of alerts within a 10 mile radius of you";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This is used to capture the audio from video footage you upload to the community";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -522,7 +531,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = com.locale.localeios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -548,8 +557,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Panic-Attack-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This is used to record video footage of alerts";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use this to show location alerts nearby";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use this to show location alerts nearby";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We use this to display the location of alerts within a 10 mile radius of you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use this to display the location of alerts within a 10 mile radius of you";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This is used to capture the audio from video footage you upload to the community";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -560,7 +570,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.01;
 				PRODUCT_BUNDLE_IDENTIFIER = com.locale.localeios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

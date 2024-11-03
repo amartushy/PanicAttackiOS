@@ -38,7 +38,7 @@ struct TOSView: View {
                             .outerShadow()
                     }
                     
-                    Text("Terms of Service & Privacy Policy")
+                    Text("Terms of Service")
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(Color("text-bold"))
                     .padding(.horizontal)
@@ -117,7 +117,7 @@ struct TOSView: View {
             Promotions
             Any Promotions made available through the Service may be governed by rules that are separate from these Terms.
             If you participate in any Promotions, please review the applicable rules and our Privacy policy. If the rules for a Promotion conflict with these Terms, the Promotion rules will apply.
-            The first five paid members to arrive on the scene and record & upload five minutes of the altercation will receive a twenty dollar ($20) payment. Everyone who responds and submits video at the scene will retain their ownership and the right to sell it to the media outlets for the highest price possible and keep 100%. You must attribute the video accordingly: “your name/Panic Attack LLC”. At all times you must stay far enough away from any law enforcement to not interfere with lawful duties and to maintain your safety.
+            The first five paid members to arrive on the scene and record & upload 1-5 minutes of the altercation will receive a payment up to $20. (Criteria is subject to change, see "How To" for up to date changes). Videos will need be approved before paid. Everyone who responds and submits video at the scene will retain their ownership and the right to sell it to the media outlets for the highest price possible and keep 100%. You must attribute the video accordingly: “your name/Panic Attack LLC”. At all times you must stay far enough away from any law enforcement to not interfere with lawful duties and to maintain your safety.
             User Accounts
             When You create an account with Us, You must provide Us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of Your account on Our Service.
             You are responsible for safeguarding the password that You use to access the Service and for any activities or actions under Your password, whether Your password is with Our Service or a Third-Party Social Media Service.
@@ -148,7 +148,7 @@ struct TOSView: View {
             Copyright Policy
             Intellectual Property Infringement
             We respect the intellectual property rights of others. It is Our policy to respond to any claim that Content posted on the Service infringes a copyright or other intellectual property infringement of any person.
-            If You are a copyright owner, or authorized on behalf of one, and You believe that the copyrighted work has been copied in a way that constitutes copyright infringement that is taking place through the Service, You must submit Your notice in writing to the attention of our copyright agent via email at djcommerce1819@gmail.com and include in Your notice a detailed description of the alleged infringement.
+            If You are a copyright owner, or authorized on behalf of one, and You believe that the copyrighted work has been copied in a way that constitutes copyright infringement that is taking place through the Service, You must submit Your notice in writing to the attention of our copyright agent via email at info@thepanicattack.app and include in Your notice a detailed description of the alleged infringement.
             You may be held accountable for damages (including costs and attorneys' fees) for misrepresenting that any Content is infringing Your copyright.
             DMCA Notice and DMCA Procedure for Copyright Infringement Claims
             You may submit a notification pursuant to the Digital Millennium Copyright Act (DMCA) by providing our Copyright Agent with the following information in writing (see 17 U.S.C 512(c)(3) for further detail):
@@ -158,7 +158,7 @@ struct TOSView: View {
             ·       Your address, telephone number, and email address.
             ·       A statement by You that You have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law.
             ·       A statement by You, made under penalty of perjury, that the above information in Your notice is accurate and that You are the copyright owner or authorized to act on the copyright owner's behalf.
-            You can contact our copyright agent via email at djcommerce1819@gmail.com. Upon receipt of a notification, the Company will take whatever action, in its sole discretion, it deems appropriate, including removal of the challenged content from the Service.
+            You can contact our copyright agent via email at info@thepanicattack.app. Upon receipt of a notification, the Company will take whatever action, in its sole discretion, it deems appropriate, including removal of the challenged content from the Service.
             Intellectual Property
             The Service and its original content (excluding Content provided by You or other users), features and functionality are and will remain the exclusive property of the Company and its licensors.
             The Service is protected by copyright, trademark, and other laws of both the Country and foreign countries.
@@ -181,7 +181,7 @@ struct TOSView: View {
             Governing Law
             The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.
             Disputes Resolution
-            If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company.
+            If You have any concern or dispute about the Service, You agree to resolve the dispute informally by contacting the Company with a request for mediation/binding arbitration at your cost
             For European Union (EU) Users
             If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which You are resident.
             United States Federal Government End Use Provisions

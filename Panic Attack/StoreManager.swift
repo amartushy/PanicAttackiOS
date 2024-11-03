@@ -1,16 +1,26 @@
 import StoreKit
 import Combine
+import Firebase
+import FirebaseAuth
 
 class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    @Published var isUserSubscribed: Bool = false
-    private var productID = "monthly_premium"
-    private var premiumProduct: SKProduct?
+    var productID = "monthly_premium"
+    var premiumProduct: SKProduct?
+    @Published var productPrice: String? = nil
 
     override init() {
         super.init()
         print("StoreManager initialized.")
         SKPaymentQueue.default().add(self)
         fetchProducts()
+        
+        if #available(iOS 15.0, *) {
+            Task {
+                await checkActiveSubscription()
+            }
+        } else {
+            // Handle older iOS versions, possibly using server-side verification if needed
+        }
     }
     
     func fetchProducts() {
@@ -20,25 +30,23 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
         request.start()
     }
     
+    private func formatPrice(product: SKProduct) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = product.priceLocale
+        return formatter.string(from: product.price) ?? ""
+    }
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         DispatchQueue.main.async {
             // Check if the fetched products list is not empty
-            if !response.products.isEmpty {
-                // Iterate over all products in the response
-                for product in response.products {
-                    // Print details of each product
-                    print("Product fetched:")
-                    print("Product ID: \(product.productIdentifier)")
-                    print("Product Name: \(product.localizedTitle)")
-                    print("Product Price: \(product.price)")
-                    print("Product Description: \(product.localizedDescription)")
-                    // Check if this is the specific product we're interested in
-                    if product.productIdentifier == self.productID {
-                        self.premiumProduct = product
-                    }
+            DispatchQueue.main.async {
+                if let product = response.products.first(where: { $0.productIdentifier == self.productID }) {
+                    self.premiumProduct = product
+                    self.productPrice = self.formatPrice(product: product)
+                } else {
+                    print("No products found or product not matched.")
                 }
-            } else {
-                print("No products found in App Store response.")
             }
             
             // Check for invalid product identifiers
@@ -75,7 +83,7 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
             case .purchased, .restored:
                 print("Transaction successful for product ID: \(String(describing: transaction.payment.productIdentifier)).")
                 DispatchQueue.main.async {
-                    self.isUserSubscribed = true
+                    self.updateSubscriptionStatus(isSubscribed: true)
                 }
                 SKPaymentQueue.default().finishTransaction(transaction)
             case .failed:
@@ -87,6 +95,22 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
         }
     }
     
+    func updateSubscriptionStatus(isSubscribed : Bool) {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("Error: User is not logged in")
+            return
+        }
+        
+        let userInfo = database.collection("users").document(userID)
+        userInfo.updateData(["isUserSubscribed" : isSubscribed]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Updated subscription status to: \(isSubscribed)")
+            }
+        }
+    }
+    
     @available(iOS 15.0, *)
     func checkActiveSubscription() async {
         print("Checking for active subscription...")
@@ -94,24 +118,22 @@ class StoreManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPay
             for try await transaction in Transaction.currentEntitlements {
                 guard case .verified(let verifiedTransaction) = transaction else {
                     print("Transaction not verified or in an unexpected state.")
+                    self.updateSubscriptionStatus(isSubscribed: false)
                     continue
                 }
                 
                 if verifiedTransaction.productID == productID,
                    verifiedTransaction.revocationDate == nil,
                    let expiryDate = verifiedTransaction.expirationDate, expiryDate > Date() {
-                    print("Active subscription found.")
-                    DispatchQueue.main.async {
-                        self.isUserSubscribed = true
-                    }
+                    print("Active subscription found. Expiration : \(expiryDate)")
+                    self.updateSubscriptionStatus(isSubscribed: true)
+
                     return
                 }
             }
-        } 
-        
-        DispatchQueue.main.async {
-            self.isUserSubscribed = false
         }
         print("No active subscription found.")
+        self.updateSubscriptionStatus(isSubscribed: false)
+
     }
 }

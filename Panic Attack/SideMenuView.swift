@@ -27,11 +27,12 @@ struct SideMenuView: View {
         "Settings" : "account-settings",
         "Terms of Service" : "account-terms",
         "Logout" : "account-logout",
-        "How To/FAQs" : "account-about"
+        "How To/FAQs" : "account-about",
+        "Contact Us" : "account-support"
     ]
     
     let menuItemOrder: [String] = [
-        "Settings", "Terms of Service", "Logout",  "How To/FAQs"
+        "Settings", "Terms of Service", "Logout",  "How To/FAQs", "Contact Us"
     ]
     
     @State var showProfile = false
@@ -116,7 +117,9 @@ struct SideMenuView: View {
                     }
                     
                     Button {
+
                         if currentUser.stripeOnboardingCompleted == false {
+                            
                             showStripeOnboarding = true
                         } else {
                             showWithdrawal = true
@@ -171,6 +174,15 @@ struct SideMenuView: View {
                                 currentUser.showTOS = true
                             } else if key ==  "How To/FAQs" {
                                 currentUser.showAbout = true
+                            } else if key == "Contact Us" {
+                                if let url = URL(string: "mailto:support@panicattack.app") {
+                                    if UIApplication.shared.canOpenURL(url) {
+                                        UIApplication.shared.open(url)
+                                    } else {
+                                        // Handle the error if the device cannot open the URL
+                                        print("Cannot open mail")
+                                    }
+                                }
                             }
                             
                             

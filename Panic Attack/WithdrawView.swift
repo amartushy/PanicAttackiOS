@@ -42,7 +42,6 @@ struct WithdrawView: View {
                         Button(action: {
                             showWithdrawal = false
                             generateHapticFeedback()
-
                         }) {
                             Image(systemName: "xmark")
                                 .font(Font.system(size: 16, weight: .semibold))
@@ -74,9 +73,8 @@ struct WithdrawView: View {
                 
                 Divider()
                 
-                
                 WithdrawalTextField(withdrawalAmount: $amountString , withdrawalMethod: $method)
-            
+
                 
                 HStack(spacing : 10) {
                     Button(action: {
@@ -364,51 +362,35 @@ struct WithdrawalTextField : View {
 
                     }
                     
-                    TextField("", text: $withdrawalAmount)
-                        .onChange(of: withdrawalAmount) { newValue in
-                            textWidth = self.calculateTextWidth(text: newValue, font: .systemFont(ofSize: 40, weight: .bold))
-                        }
+                    Text(String(format: "%.2f", currentUser.user.balance))
                         .font(Font.system(size: 36, weight: .bold))
                         .foregroundColor(Double(self.withdrawalAmount) ?? 0.0 <= currentUser.user.balance ? Color("text-bold") : Color(.red))
                         .opacity(0.9)
                         .multilineTextAlignment(.center) // Ensure text is centered
                         .frame(width: max(100, textWidth), height: 40)
-                        .keyboardType(.decimalPad)
-                        .onAppear {
-                            // Initial calculation
-                            textWidth = self.calculateTextWidth(text: withdrawalAmount, font: .systemFont(ofSize: 40, weight: .bold))
-                        }
-                        .onTapGesture {
-                            isEditing = true
+                        .onChange(of: withdrawalAmount) { newValue in
+                            textWidth = self.calculateTextWidth(text: newValue, font: .systemFont(ofSize: 40, weight: .bold))
                         }
                 }
                 
-                
-                if Double(self.withdrawalAmount) ?? 0.0 > 0.0 {
-                    Button {
-                        self.withdrawalAmount = ""
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(Font.system(size: 14, weight: .bold))
-                            .foregroundColor(Color("text-bold"))
-                    }
-                } else {
-                    Text("")
-                        .frame(width : 10)
-                }
+                Text("")
+                    .frame(width : 10)
                 
                 Spacer()
             }
-            
-            Text("Withdraw up to $\(String(format: "%.2f", currentUser.user.balance))")
-                .font(Font.system(size: 12, weight: .semibold))
-                .foregroundColor(Color("text-bold"))
-                .opacity(0.7)
+//            
+//            Text("Withdraw up to $\(String(format: "%.2f", currentUser.user.balance))")
+//                .font(Font.system(size: 12, weight: .semibold))
+//                .foregroundColor(Color("text-bold"))
+//                .opacity(0.7)
             
             Spacer()
                                 
         }
         .padding([.leading, .top, .trailing])
+        .onChange(of: currentUser.user.balance) { oldValue, newValue in
+            self.withdrawalAmount = String(format: "%.2f", currentUser.user.balance)
+        }
     }
 }
 

@@ -11,6 +11,7 @@ import CoreLocation
 import Firebase
 import FirebaseCore
 
+let base_url = "https://panicattack-2e382c02613e.herokuapp.com"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,10 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        //Braintree app switching URL scheme
-//        BTAppContextSwitcher.setReturnURLScheme("com.tutortree.tutortree3.payments")
-
         
         FirebaseApp.configure()
         
@@ -71,6 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveDeviceTokenToFirestore(token: String) {
         guard let userID = Auth.auth().currentUser?.uid else { return }
 
+        if !userID.isEmpty {
+            
+        }
         let usersRef = Firestore.firestore().collection("users")
         usersRef.document(userID).setData(["isPushOn" : true, "pushToken": token], merge: true)
     }

@@ -10,9 +10,14 @@ import SwiftUI
 
 struct UpgradePremiumView: View {
     @EnvironmentObject var currentUser : CurrentUserViewModel
-    @EnvironmentObject var checkoutVM : CheckoutViewModel
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @EnvironmentObject var storeManager : StoreManager
+    
+    @State var showTOS = false
+    @State var showPP = false
+    
     
     @State var showProgress : Bool = false
     @State var showError : Bool = false
@@ -72,13 +77,13 @@ struct UpgradePremiumView: View {
                         .padding(.vertical, 30)
                     
                     if showExpiredText != nil {
-                        Text("Your free trial has expired. Get unlimited access with a premium membership.")
+                        Text("Your free trial has expired. Get unlimited access with Monthly Premium.")
                             .font(.system(size: 20, weight : .bold))
                             .foregroundColor(Color("text-bold"))
                             .multilineTextAlignment(.center)
                         
                     } else {
-                        Text("Get unlimited access with a premium membership.")
+                        Text("Get unlimited access with Monthly Premium.")
                             .font(.system(size: 20, weight : .bold))
                             .foregroundColor(Color("text-bold"))
                             .multilineTextAlignment(.center)
@@ -94,7 +99,7 @@ struct UpgradePremiumView: View {
                                 Text("Unlimited Alerts")
                                     .font(.system(size: 16, weight : .bold))
                                 
-                                Text("Send alerts whenever you're in trouble or need help")
+                                Text("Send alerts to your community whenever you need.")
                                     .font(.system(size: 14, weight : .regular))
                             }
                             
@@ -130,19 +135,22 @@ struct UpgradePremiumView: View {
                 
                                 
                 Button {
-                    
-                    let manager = CheckoutControllerManager(checkout: checkoutVM, currentUser: currentUser, navigateToError: $showError, navigateToSuccess : $currentUser.showSuccessfulPayment)
-                    manager.checkoutController.showApplePaySheet()
-                    
+                    storeManager.startSubscriptionProcess { success, message in
+                        if success {
+                            print("Purchase successful!")
+                        } else {
+                            print("Purchase failed: \(message ?? "Unknown error")")
+                        }
+                    }
                 } label: {
                     
                     HStack {
                         Spacer()
-
-                        Text("Subscribe $9.99 / mo")
-                            .font(.system(size: 16, weight : .semibold))
-                            .foregroundColor(.white)
-                        
+                        if let priceString = storeManager.productPrice {
+                            Text("Subscribe \(priceString) / mo")
+                                .font(.system(size: 16, weight : .semibold))
+                                .foregroundColor(.white)
+                        }                        
                         Spacer()
 
                     }
@@ -155,7 +163,29 @@ struct UpgradePremiumView: View {
                 }
                 .padding(.vertical, 30)
                 .padding(.horizontal, 30)
-                .onAppear { checkoutVM.preparePaymentSheet() }
+                
+                VStack {
+                    Text("By subscribing you agree to the")
+                    HStack(spacing : 0) {
+                        Button {
+                            showTOS = true
+                        } label: {
+                            Text("Terms & Conditions").underline()
+                        }
+                        
+                        Text("and   ")
+                        
+                        Button {
+                            showPP = true
+                        } label: {
+                            Text("Privacy Policy").underline()
+                        }
+                    }
+                }
+                .font(Font.custom("Avenir Next", size: 10))
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color(.white))
+                .frame(width: 193, height: 40, alignment: .center)
 
                 
             }
@@ -176,6 +206,13 @@ struct UpgradePremiumView: View {
                     .centerGrowingModal(isPresented: showError)
                 Spacer()
             }
+            
+            
+            TOSView(showTOS : $showTOS)
+                .bottomUpSheet(isPresented: showTOS)
+            
+            PrivacyPolicyView(showTOS: $showPP)
+                .bottomUpSheet(isPresented: showPP)
             
         }
     }

@@ -69,14 +69,9 @@ class StripeOnboardingViewModel: ObservableObject {
 
     @Published var selectedWithdrawalMethod: WithdrawalMethodType?
 
-    
-    let baseURL = "https://locale-ios-d4e8c531cbbe.herokuapp.com"
-    
-    
-    
     func checkOnboardingStatus(userId: String, completion: @escaping (Bool?, Error?) -> Void) {
         
-        let correctedURLString = "\(baseURL)/check_stripe_onboarding"
+        let correctedURLString = "\(base_url)/check_stripe_onboarding"
         guard let url = URL(string: correctedURLString) else {
             completion(nil, NSError(domain: "InvalidURL", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
             return
@@ -129,7 +124,7 @@ class StripeOnboardingViewModel: ObservableObject {
     
 
     func createStripeExpressAccount(email: String, userID: String, completion: @escaping (URL?, Error?) -> Void) {
-        guard let url = URL(string: "\(baseURL)/create_express_account") else {
+        guard let url = URL(string: "\(base_url)/create_express_account") else {
             completion(nil, NSError(domain: "URLCreationError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to create URL"]))
             return
         }
@@ -185,7 +180,7 @@ class StripeOnboardingViewModel: ObservableObject {
     
     
     func fetchWithdrawalMethods(stripeAccountID: String) {
-        guard let url = URL(string: "\(baseURL)/get_withdrawal_methods") else {
+        guard let url = URL(string: "\(base_url)/get_withdrawal_methods") else {
             print("Invalid URL")
             return
         }

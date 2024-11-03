@@ -12,8 +12,9 @@ import Firebase
 
 struct SettingsView: View {
     @EnvironmentObject var currentUser : CurrentUserViewModel
-    @EnvironmentObject var checkoutVM : CheckoutViewModel
+    @EnvironmentObject var storeManager : StoreManager
 
+    @State var showUpgradeView = false
     @State var showCancelMembership = false
     @State var showProcessing = false
     @State var showError : Bool = false
@@ -76,7 +77,7 @@ struct SettingsView: View {
                     VStack {
 
                         AccountItemView(baseColor: .blue, icon: "iphone", title: "Push Notifications", isOn: $currentUser.user.isPushOn)
-                            .onChange(of: currentUser.user.isPushOn) {  newValue in
+                            .onChange(of: currentUser.user.isPushOn) { _, newValue in
                                 if newValue {
                                     currentUser.enablePush()
                                 } else {
@@ -138,10 +139,12 @@ struct SettingsView: View {
                                             .foregroundColor(Color("text-bold"))
                                             .padding(.leading, 5)
                                         
-                                        Text("$9.99 / mo")
-                                            .font(.system(size: 14, weight: .medium))
-                                            .foregroundColor(Color("text-bold"))
-                                            .padding(.leading, 5)
+                                        if let priceString = storeManager.productPrice {
+                                            Text("\(priceString) / mo")
+                                                .font(.system(size: 14, weight: .medium))
+                                                .foregroundColor(Color("text-bold"))
+                                                .padding(.leading, 5)
+                                        }
                                     }
                                     
                                     Spacer()
@@ -160,10 +163,8 @@ struct SettingsView: View {
                             }
                         } else {
                             Button  {
-                                
-                                let manager = CheckoutControllerManager(checkout: checkoutVM, currentUser: currentUser, navigateToError: $showError, navigateToSuccess : $currentUser.showSuccessfulPayment)
-                                manager.checkoutController.showApplePaySheet()
-                                
+                                showUpgradeView = true
+
                             } label: {
                                 HStack {
                                     ZStack {
@@ -201,12 +202,13 @@ struct SettingsView: View {
                                         .padding(.horizontal, 12)
                                         .padding(.vertical, 5)
                                         .background(Color("toggleOn"))
-                                        .cornerRadius(10)
-
-                                    
+                                        .cornerRadius(10)                                    
                                 }
                                 .padding(.bottom)
                             }
+                            .sheet(isPresented: $showUpgradeView, content: {
+                                UpgradePremiumView()
+                            })
                             
                             
                         }
@@ -225,7 +227,6 @@ struct SettingsView: View {
                 
                 Spacer()
             }
-            .onAppear { checkoutVM.preparePaymentSheet() }
             .background(Color("background"))
             .overlay(
                 Color.black.opacity(showCancelMembership || showProcessing ? 0.5 : 0)

@@ -13,6 +13,7 @@ struct InitialView: View {
     @EnvironmentObject var currentUser : CurrentUserViewModel
     
     @State var showTOS = false
+    @State var showPP = false
     
     @State private var circleRadius: Double = 1 // Default radius in miles
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 0, longitude: 0), latitudinalMeters: 1000, longitudinalMeters: 1000)
@@ -138,7 +139,7 @@ struct InitialView: View {
                                     Text("and   ")
                                     
                                     Button {
-                                        showTOS = true
+                                        showPP = true
                                     } label: {
                                         Text("Privacy Policy").underline()
                                     }
@@ -156,9 +157,11 @@ struct InitialView: View {
                     }
                     
                     
-//                    TOSView(showTOS : $showTOS)
-//                        .bottomUpSheet(isPresented: showTOS)
+                    TOSView(showTOS : $showTOS)
+                        .bottomUpSheet(isPresented: showTOS)
                     
+                    PrivacyPolicyView(showTOS: $showPP)
+                        .bottomUpSheet(isPresented: showPP)
                     
                 } //end ZStack
             }

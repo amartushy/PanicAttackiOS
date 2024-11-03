@@ -15,7 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -28,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(LocationViewModel())
             .environmentObject(VideoUploadViewModel())
             .environmentObject(StripeOnboardingViewModel())
-            .environmentObject(CheckoutViewModel())
             .environmentObject(AdminViewModel())
+            .environmentObject(StoreManager())
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
